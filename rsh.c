@@ -42,6 +42,12 @@ void sendmsg (char *user, char *target, char *msg) {
 	strncpy(req.msg, msg, sizeof(req.msg) - 1);
 	req.msg[sizeof(req.msg) - 1] = '\0';
 
+	//cuts trailling newline from message if present
+	size_t msg_len = strlen(req.msg);
+	if (msg_len > 0 && req.msg[msg_len - 1] == '\n') {
+    		req.msg[msg_len - 1] = '\0';
+	}
+
 	//open the server FIFO (O_WRONLY)
 	server_fd = open("serverFIFO", O_WRONLY);
 	if (server_fd == -1) {
