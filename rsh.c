@@ -144,8 +144,12 @@ int main(int argc, char **argv) {
 
     // TODO:
     // create the message listener thread
-
+   
     pthread_t listener_thread;
+    if (pthread_create(&listener_thread, NULL, messageListener, NULL) != 0) {
+        perror("Failed to create message listener thread");
+        exit(EXIT_FAILURE);
+    }
 
     //detach the thread
     pthread_detach(listener_thread); 
