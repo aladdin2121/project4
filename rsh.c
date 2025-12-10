@@ -93,7 +93,7 @@ void* messageListener(void *arg) {
 			//print the message
 
 
-			printf("\nIncoming message from %s: %s\n", incoming_msg.source, incoming_msg.msg);
+			printf("Incoming message from %s: %s\n", incoming_msg.source, incoming_msg.msg);
 			fprintf(stderr,"rsh>"); //reprint the prompt to make it look better
 
 			fflush(stdout);
